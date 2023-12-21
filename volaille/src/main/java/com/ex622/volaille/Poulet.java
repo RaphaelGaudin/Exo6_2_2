@@ -5,7 +5,7 @@ package com.ex622.volaille;
  * Elle étend la classe abstraite {@code Volaille} et implémente les méthodes
  * abstraites pour calculer le prix et obtenir le poids d'abattage.
  *
- * @author Raphaël Gaudin
+ * @author Armand Girard & Raphael Gaudin
  * @version 1.0
  */
 public class Poulet extends Volaille {
@@ -24,12 +24,12 @@ public class Poulet extends Volaille {
     /**
      * Calcule le prix du poulet en fonction du prix du jour.
      *
-     * @param prixDuJour Le prix du jour pour le calcul du prix du poulet.
+     * @param prixKilo Le prix du kilo pour le calcul du prix du poulet.
      * @return Le prix calculé du poulet.
      */
     @Override
-    public double calculerPrix(double prixDuJour) {
-        return getPoids() * prixDuJour;
+    public double calculerPrix(double prixKilo) {
+        return getPoids() * prixKilo;
     }
 
     /**

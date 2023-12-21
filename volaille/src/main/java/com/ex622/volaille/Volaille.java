@@ -4,7 +4,7 @@ package com.ex622.volaille;
  * La classe abstraite {@code Volaille} représente une volaille générique avec un numéro d'identification
  * et un poids. Elle fournit des méthodes abstraites pour calculer le prix et obtenir le poids d'abattage.
  *
- * @author Armand Girard
+ * @author Armand Girard & Raphael Gaudin
  * @version 1.0
  */
 public abstract class Volaille {
@@ -46,6 +46,15 @@ public abstract class Volaille {
      */
     public double getPoids() {
         return poids;
+    }
+
+    /**
+     * Retourne l'instance de la classe {@code Volaille}.
+     *
+     * @return L'instance de la classe {@code Volaille}.
+     */
+    public Volaille getVolaille() {
+        return this;
     }
 
     /**

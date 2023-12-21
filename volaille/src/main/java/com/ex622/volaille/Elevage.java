@@ -10,7 +10,7 @@ import java.util.List;
  * Elle contient des méthodes pour enregistrer de jeunes animaux, trier les animaux
  * à abattre en fonction de leur poids, et évaluer le prix obtenu pour les animaux à abattre.
  *
- * @author Raphaël Gaudin	
+ * @author Armand Girard & Raphael Gaudin	
  * @version 1.0
  */
 public class Elevage {
@@ -46,15 +46,16 @@ public class Elevage {
     /**
      * Évalue le prix total obtenu pour les animaux à abattre en fonction du prix du jour.
      *
-     * @param prixDuJour Le prix du jour pour le calcul du prix total.
+     * @param prixKilo Le prix du kilo pour le calcul du prix total.
+     * @param prixAbattage Le prix de l'abattage pour le calcul du prix total.
      * @return Le prix total des animaux à abattre.
      */
-    public double evaluerPrixAnimauxAAbattre(double prixDuJour) {
+    public double evaluerPrixAnimauxAAbattre(double prixKilo, double prixAbattage) {
         double prixTotal = 0.0;
         for (Volaille volaille : animaux) {
-            prixTotal += volaille.calculerPrix(prixDuJour);
+            prixTotal += volaille.calculerPrix(prixKilo);
         }
-        return prixTotal;
+        return prixTotal - prixAbattage;
     }
 
     public Volaille[] getAnimaux() {
