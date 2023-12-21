@@ -5,7 +5,8 @@ package com.ex622.volaille;
  * Elle étend la classe abstraite {@code Volaille} et implémente les méthodes
  * abstraites pour calculer le prix et obtenir le poids d'abattage.
  *
- * @author Armand Girard & Raphael Gaudin
+ * @author Armand Girard
+ * @author Raphael Gaudin
  * @version 1.0
  */
 public class Poulet extends Volaille {

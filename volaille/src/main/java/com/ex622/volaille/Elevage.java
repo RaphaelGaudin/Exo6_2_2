@@ -10,7 +10,8 @@ import java.util.List;
  * Elle contient des méthodes pour enregistrer de jeunes animaux, trier les animaux
  * à abattre en fonction de leur poids, et évaluer le prix obtenu pour les animaux à abattre.
  *
- * @author Armand Girard & Raphael Gaudin	
+ * @author Armand Girard
+ * @author Raphael Gaudin
  * @version 1.0
  */
 public class Elevage {

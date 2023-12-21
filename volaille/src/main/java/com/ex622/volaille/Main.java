@@ -6,7 +6,8 @@ import java.util.Scanner;
  * La classe {@code Main} est la classe principale du programme. Elle contient le point d'entrée
  * pour exécuter le programme d'élevage de volailles.
  *
- * @author Armand Girard & Raphael Gaudin
+ * @author Armand Girard
+ * @author Raphael Gaudin
  * @version 1.0
  */
 public class Main {
@@ -17,14 +18,52 @@ public class Main {
      */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+
         // Création de l'élevage
         Elevage elevage = new Elevage();
 
-        // Enregistrement de quelques volailles
-        elevage.enregistrerVolaille(new Poulet(101, 2.0));
-        elevage.enregistrerVolaille(new Poulet(102, 2.6));
-        elevage.enregistrerVolaille(new Canard(201, 3.5));
-        elevage.enregistrerVolaille(new Canard(202, 3.2));
+        System.out.print("Entrez le prix du kilo: ");
+        double prixKilo = scanner.nextDouble();
+
+        System.out.print("Entrez le prix de l'abattage: ");
+        double prixAbattage = scanner.nextDouble();
+
+        System.out.println("Combien de volailles voulez-vous enregistrer?");
+        int nbVolailles = scanner.nextInt();
+
+        for (int i = 0; i < nbVolailles; i++) {
+            System.out.print("Entrez le type de volaille (poulet ou canard): ");
+            String choice = scanner.next();
+
+            if (choice.equals("poulet")) {
+                System.out.println("Entrez le numéro d'identification: ");
+                int id = scanner.nextInt();
+                System.out.println("Entrez le poids en kilos: ");
+                double poids = scanner.nextDouble();
+                elevage.enregistrerVolaille(new Poulet(id, poids));
+            } else if (choice.equals("canard")) {
+                System.out.println("Entrez le numéro d'identification: ");
+                int id = scanner.nextInt();
+                System.out.print("Entrez le poids: ");
+                double poids = scanner.nextDouble();
+                elevage.enregistrerVolaille(new Canard(id, poids));
+            } else {
+                System.out.println("Erreur: type de volaille invalide.");
+            }
+        }
+
+        // Demander à l'utilisateur d'entrer un poids
+        System.out.print("Entrez le poids pour filtrer les volailles: ");
+        double poidsFiltre = scanner.nextDouble();
+
+        // Affichage des volailles avec un poids supérieur ou égal au poids entré
+        System.out.println("Volailles avec un poids supérieur ou égal à " + poidsFiltre + " kg:");
+        for (Volaille volaille : elevage.getAnimaux()) {
+            if (volaille.getPoids() >= poidsFiltre) {
+                String typeVolaille = volaille instanceof Poulet ? "Poulet" : "Canard";
+                System.out.println("Type: " + typeVolaille + ", ID: " + volaille.getNumeroIdentification() + ", Poids: " + volaille.getPoids());
+            }
+        }
 
         // Affichage des informations des volailles
         System.out.println("Volailles enregistrées :");
@@ -35,25 +74,6 @@ public class Main {
         // Trier les animaux à abattre
         elevage.trierAnimauxAAbattre();
         System.out.println("Volailles triées pour l'abattage.");
-
-        
-        /*System.out.print("Entrez le prix du kilo du poulet : ");
-        double prixKiloPoulet = scanner.nextDouble();
-
-        System.out.print("Entrez le prix de l'abattage du poulet: ");
-        double prixAbattagePoulet = scanner.nextDouble();
-
-        System.out.print("Entrez le prix du kilo du canard: ");
-        double prixKiloCanard = scanner.nextDouble();
-
-        System.out.print("Entrez le prix de l'abattage du canard: ");
-        double prixAbattageCanard = scanner.nextDouble();*/
-
-        System.out.print("Entrez le prix du kilo: ");
-        double prixKilo = scanner.nextDouble();
-
-        System.out.print("Entrez le prix de l'abattage: ");
-        double prixAbattage = scanner.nextDouble();
 
         // Évaluation du prix total des animaux à abattre
         double prixTotal = elevage.evaluerPrixAnimauxAAbattre(prixKilo, prixAbattage);
