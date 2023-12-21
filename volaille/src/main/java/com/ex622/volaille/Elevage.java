@@ -1,8 +1,6 @@
 package com.ex622.volaille;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -38,10 +36,12 @@ public class Elevage {
     }
 
     /**
-     * Trie les animaux à abattre en fonction de leur poids.
+     * Supprime une volaille de l'élevage.
+     *
+     * @param volaille La volaille à supprimer.
      */
-    public void trierAnimauxAAbattre() {
-        Collections.sort(animaux, Comparator.comparingDouble(Volaille::getPoids));
+    public void supprimerVolaille(Volaille volaille) {
+        animaux.remove(volaille);
     }
 
     /**
