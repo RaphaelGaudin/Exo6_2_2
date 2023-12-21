@@ -54,8 +54,9 @@ public class Elevage {
         double prixTotal = 0.0;
         for (Volaille volaille : animaux) {
             prixTotal += volaille.calculerPrix(prixKilo);
+            prixTotal -= prixAbattage;
         }
-        return prixTotal - prixAbattage;
+        return prixTotal;
     }
 
     public Volaille[] getAnimaux() {
