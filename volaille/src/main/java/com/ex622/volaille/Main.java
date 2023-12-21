@@ -17,7 +17,12 @@ public class Main {
      * @param args Les arguments de la ligne de commande (non utilisés dans cet exemple).
      */
     public static void main(String[] args) {
+        // Scanner pour lire les entrées utilisateur
         Scanner scanner = new Scanner(System.in);
+        
+        // Variables pour quitter le programme
+        String quit = null;
+        String choice = null;
 
         // Création de l'élevage
         Elevage elevage = new Elevage();
@@ -28,9 +33,6 @@ public class Main {
 
         System.out.print("Entrez le prix de l'abattage: ");
         double prixAbattage = scanner.nextDouble();
-
-        String quit = null;
-        String choice = null;
 
         do {
             System.out.println("Que voulez-vous faire ? (q pour quitter)");
@@ -69,6 +71,7 @@ public class Main {
         scanner.close();
     }
 
+    // Ajout d'une volaille à l'élevage
     public static void ajouterVolaille(Elevage elevage, Scanner scanner) {
         System.out.print("Entrez le type de volaille (poulet ou canard): ");
         String choice = scanner.next();
@@ -90,8 +93,8 @@ public class Main {
         }
     }
 
+    // Affichage des volailles triées par poids
     public static void afficherVolaillesTriees(Elevage elevage) {
-        // Affichage des volailles triées par poids
         System.out.println("Volailles triées par poids :");
         for (Volaille volaille : elevage.getAnimaux()) {
             String typeVolaille = volaille instanceof Poulet ? "Poulet" : "Canard";
@@ -99,8 +102,8 @@ public class Main {
         }
     }
 
+    // Affichage de toutes les volailles
     public static void afficherVolailles(Elevage elevage) {
-        // Affichage de toutes les volailles
         System.out.println("Volailles:");
         for (Volaille volaille : elevage.getAnimaux()) {
             String typeVolaille = volaille instanceof Poulet ? "Poulet" : "Canard";
@@ -108,8 +111,8 @@ public class Main {
         }
     }
 
+    // Évaluation du prix total des animaux à abattre
     public static void afficherPrixTotal(Elevage elevage, double prixKilo, double prixAbattage) {
-        // Évaluation du prix total des animaux à abattre
         double prixTotal = elevage.evaluerPrixAnimauxAAbattre(prixKilo, prixAbattage);
         System.out.println("Prix total pour l'abattage : " + prixTotal + " euros");
     }
